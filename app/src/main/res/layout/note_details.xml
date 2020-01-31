@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:orientation="horizontal"
+        android:background="@drawable/oval"
+        android:padding="@dimen/fab_margin">
+
+        <TextView
+            android:id="@+id/showtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:textStyle="bold"
+            android:textSize="@dimen/NotesTitleSize"/>
+
+        <TextView
+            android:id="@+id/showtimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/NotesTitleSize"/>
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/showcontent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.7"
+        android:padding="@dimen/fab_margin"
+        android:background="@drawable/oval"
+        android:layout_gravity="start|top"
+        android:layout_marginBottom="10dp"
+        android:overScrollMode="ifContentScrolls"
+        android:textSize="@dimen/contentSize"/>
+
+
+    <Button
+        android:id="@+id/detail_to_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/back_to_list"
+        android:textSize="@dimen/button_text_size"
+        android:textColor="@color/textcolor"
+        android:layout_weight="0.1"/>
+
+
+</LinearLayout>

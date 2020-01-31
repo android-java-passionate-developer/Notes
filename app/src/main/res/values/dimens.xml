@@ -1,3 +1,9 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="NotesTitleSize">24sp</dimen>
+    <dimen name="contentSize">20sp</dimen>
+    <dimen name="create_icon_size">60sp</dimen>
+    <dimen name="padding_list_item">20dp</dimen>
+    <dimen name="margin_list_row">40sp</dimen>
+    <dimen name="button_text_size">32sp</dimen>
 </resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/add_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/title"
+        android:layout_weight="0.2"
+        android:ems="100"
+        android:padding="@dimen/fab_margin"
+        android:background="@drawable/oval"
+        android:layout_gravity="start"
+        android:foregroundGravity="fill_horizontal|left"
+        android:textSize="@dimen/NotesTitleSize"
+        android:layout_marginBottom="10dp"
+        android:cursorVisible="true"
+        android:textStyle="bold"
+        android:textCursorDrawable="@drawable/cursor"
+        />
+
+    <EditText
+        android:id="@+id/add_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/content"
+        android:layout_weight="0.7"
+        android:gravity="top|start"
+        android:padding="@dimen/fab_margin"
+        android:textSize="@dimen/contentSize"
+        android:background="@drawable/oval"
+        android:cursorVisible="true"
+        android:screenReaderFocusable="true"
+        android:scrollbarSize="@dimen/NotesTitleSize"
+        android:overScrollMode="ifContentScrolls"
+        android:layout_marginBottom="10dp"
+        android:textCursorDrawable="@drawable/cursor"/>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:textSize="@dimen/button_text_size"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_weight="0.08"
+        android:background="@color/savebutton"
+        android:layout_marginBottom="5dp"/>
+    <Button
+        android:id="@+id/create_to_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/back_to_list"
+        android:textSize="@dimen/button_text_size"
+        android:textColor="@color/textcolor"
+        android:layout_weight="0.08"
+        android:gravity="center"
+        android:background="@color/lightButton"/>
+
+</LinearLayout>

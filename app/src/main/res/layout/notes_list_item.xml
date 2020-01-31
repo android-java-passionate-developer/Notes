@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical|start"
+    android:padding="@dimen/padding_list_item">
 
     <TextView
         android:id="@+id/list_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:textColor="@color/textcolor"
+        android:textStyle="bold"
+        android:textSize="@dimen/NotesTitleSize"
+        android:layout_margin="@dimen/margin_list_row"/>
 
 </android.support.constraint.ConstraintLayout>
