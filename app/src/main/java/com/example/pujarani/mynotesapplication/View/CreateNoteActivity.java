@@ -16,7 +16,6 @@ import com.example.pujarani.mynotesapplication.Model.Notes;
 import com.example.pujarani.mynotesapplication.R;
 import com.example.pujarani.mynotesapplication.ViewModel.NotesViewModelClass;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 

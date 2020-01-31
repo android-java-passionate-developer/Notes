@@ -1,7 +1,6 @@
 package com.example.pujarani.mynotesapplication.View;
 
 
-import android.animation.ObjectAnimator;
 import android.app.ProgressDialog;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleOwner;
@@ -10,8 +9,6 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Path;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -22,20 +19,13 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.animation.PathInterpolator;
 import android.widget.TextView;
 
 import com.example.pujarani.mynotesapplication.Model.Notes;
 import com.example.pujarani.mynotesapplication.R;
 import com.example.pujarani.mynotesapplication.ViewModel.NotesViewModelClass;
 
-import java.io.File;
-import java.util.Date;
 import java.util.List;
 
 
