@@ -3,7 +3,9 @@ package com.example.pujarani.mynotesapplication.View;
 import android.app.ProgressDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
@@ -49,7 +51,7 @@ public class CreateNoteActivity extends AppCompatActivity{
                 if (validate()) {
                     saveNotes();
                 } else {
-                    Toast.makeText(context, "You forgot to add title or contents for your notes.", Toast.LENGTH_SHORT);
+                    Toast.makeText(context, "You forgot to add title or content for your note.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -81,6 +83,9 @@ public class CreateNoteActivity extends AppCompatActivity{
         Notes notes = new Notes(title.getText().toString(), content.getText().toString(), d.getTime());
         viewModelClass.insert(notes);
         hideDialog();
+        Intent noteDetails = new Intent(CreateNoteActivity.this, ShowNoteDetailsActivity.class);
+        noteDetails.putExtra("Note", (Parcelable) notes);
+        startActivity(noteDetails);
         finish();
     }
 
