@@ -23,7 +23,7 @@ import java.util.Date;
  * Created by Puja.Rani on 28-01-2020.
  */
 
-public class CreateNoteActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateNoteActivity extends AppCompatActivity{
 
     EditText title, content;
     Button save, back;
@@ -37,6 +37,22 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.create_note);
 
         initUI();
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (validate()) {
+                    saveNotes();
+                } else {
+                    Toast.makeText(context, "You forgot to add title or contents for your notes.", Toast.LENGTH_SHORT);
+                }
+            }
+        });
     }
 
     private void initUI() {
@@ -62,8 +78,7 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
     private void saveNotes() {
         showDialog();
         Date d = new Date();
-        CharSequence s = DateFormat.format("d MMMM yyyy, hh:mm a", d.getTime());
-        Notes notes = new Notes(title.getText().toString(), content.getText().toString(), s.toString());
+        Notes notes = new Notes(title.getText().toString(), content.getText().toString(), d.getTime());
         viewModelClass.insert(notes);
         hideDialog();
         finish();
@@ -83,19 +98,4 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
         if (dialog.isShowing()) dialog.dismiss();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.create_to_list:
-                onBackPressed();
-                break;
-            case R.id.save:
-                if (validate()) {
-                    saveNotes();
-                } else {
-                    Toast.makeText(context, "You forgot to add title or contents for your notes.", Toast.LENGTH_SHORT);
-                }
-                break;
-        }
-    }
 }

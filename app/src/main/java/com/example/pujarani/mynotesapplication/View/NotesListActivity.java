@@ -19,6 +19,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ import com.example.pujarani.mynotesapplication.Model.Notes;
 import com.example.pujarani.mynotesapplication.R;
 import com.example.pujarani.mynotesapplication.ViewModel.NotesViewModelClass;
 
+import java.io.File;
 import java.util.List;
 
 
@@ -45,9 +47,8 @@ public class NotesListActivity extends AppCompatActivity implements LifecycleOwn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.note_list);
-
         initUI();
-        loadData();
+//        deleteDatabaseFile(context,"Notes_Database");
     }
 
     private void initUI() {
@@ -57,6 +58,7 @@ public class NotesListActivity extends AppCompatActivity implements LifecycleOwn
         no_notes = (TextView) findViewById(R.id.no_notes);
         lifecycleRegistry = new LifecycleRegistry(this);
         lifecycleRegistry.markState(Lifecycle.State.CREATED);
+        list = (RecyclerView) findViewById(R.id.list_notes);
         dialog = new ProgressDialog(context);
         dialog.setMessage("Loading....");
         adapter = new RecyclerViewAdapter(this, new RecyclerViewAdapter.itemClickListener() {
@@ -68,6 +70,7 @@ public class NotesListActivity extends AppCompatActivity implements LifecycleOwn
             }
         });
         viewModelClass = ViewModelProviders.of(this).get(NotesViewModelClass.class);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -92,12 +95,10 @@ public class NotesListActivity extends AppCompatActivity implements LifecycleOwn
                 adapter.setWords(notes);
             }
         });
-        hideDialog();
-
-        list = (RecyclerView) findViewById(R.id.list_notes);
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(this));
         list.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
+        hideDialog();
     }
 
 
@@ -109,7 +110,7 @@ public class NotesListActivity extends AppCompatActivity implements LifecycleOwn
         if (dialog.isShowing()) dialog.dismiss();
     }
 
-  /*  public static void deleteDatabaseFile(Context context, String databaseName) {
+   public static void deleteDatabaseFile(Context context, String databaseName) {
         File databases = new File(context.getApplicationInfo().dataDir + "/databases");
         File db = new File(databases, databaseName);
         if (db.delete())
@@ -124,12 +125,19 @@ public class NotesListActivity extends AppCompatActivity implements LifecycleOwn
             else
                 System.out.println("Failed to delete database journal");
         }
-    }*/
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
         lifecycleRegistry.markState(Lifecycle.State.STARTED);
+        loadData();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+//        loadData();
     }
 
     @NonNull

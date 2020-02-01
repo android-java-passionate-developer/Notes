@@ -19,7 +19,7 @@ public interface NotesDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Notes notes);
 
-    @Query("SELECT * FROM Notes_Table")
+    @Query("SELECT * FROM Notes_Table order by timestamp desc")
     LiveData<List<Notes>> getAllNotesSaved();
 
     @Query("Delete from Notes_Table")

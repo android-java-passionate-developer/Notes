@@ -8,6 +8,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
+import java.sql.Date;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Created by Puja.Rani on 28-01-2020.
  */
@@ -27,9 +30,9 @@ public class Notes implements Parcelable{
     private String content;
 
     @NonNull
-    private String timestamp;
+    private long timestamp;
 
-    public Notes(@NonNull String title, @NonNull String content, @NonNull String timestamp){
+    public Notes(@NonNull String title, @NonNull String content, @NonNull long timestamp){
         this.title = title;
         this.content = content;
         this.timestamp = timestamp;
@@ -40,20 +43,7 @@ public class Notes implements Parcelable{
         id = in.readInt();
         title = in.readString();
         content = in.readString();
-        timestamp = in.readString();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(title);
-        dest.writeString(content);
-        dest.writeString(timestamp);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
+        timestamp = in.readLong();
     }
 
     public static final Creator<Notes> CREATOR = new Creator<Notes>() {
@@ -67,6 +57,21 @@ public class Notes implements Parcelable{
             return new Notes[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+        parcel.writeInt(id);
+        parcel.writeString(title);
+        parcel.writeString(content);
+        parcel.writeLong(timestamp);
+    }
+
 
     @NonNull
     public int getId() {
@@ -96,11 +101,11 @@ public class Notes implements Parcelable{
     }
 
     @NonNull
-    public String getTimestamp() {
+    public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(@NonNull String timestamp) {
+    public void setTimestamp(@NonNull long timestamp) {
         this.timestamp = timestamp;
     }
 }

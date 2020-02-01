@@ -31,6 +31,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     void setWords(List<Notes> notes) {
+//        if(notesList != null && notesList.size() > 0) {
+//            notesList.clear();
+//        }
         notesList = notes;
         notifyDataSetChanged();
     }

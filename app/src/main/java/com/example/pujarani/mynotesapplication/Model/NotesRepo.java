@@ -33,7 +33,7 @@ public class NotesRepo {
                 notesDAO.insert(notes);
             }
         });
-        NotesDatabase.deleteInstance();
+//        NotesDatabase.deleteInstance();
     }
 
     public void delete() {
